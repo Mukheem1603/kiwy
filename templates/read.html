@@ -13,6 +13,20 @@ Read
       });
     });
     </script> -->
+    <style>
+      #card{
+          background-color: #DCDCDC;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          padding: 4%;
+          
+      }
+      #minicard{
+        background-color: #C0C0C0;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          padding: 4%;
+          margin-top: 2%;
+      }
+      </style>
 {% endblock %}
 {% block classr %}
 active
@@ -24,27 +38,43 @@ active
 <!-- <div class="container">
     <input class="form-control" id="myInput" type="text" placeholder="Search..">
 </div> -->
+<div class="container">
+  <div class="jumbotron" style="background-color: #D3D3D3;">
+    <h1 class="display-4">Hello, {{user}} ❤</h1>
+    <p class="lead">Here is the list of your diary entries,happy reading✨</p>
+  </div>
+</div>
+
 
 <div class="container" id="myDIV">
     
-    <br>
-    {% for d in diary %}
-    <p>
-        <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExample{{d.id}}" aria-expanded="false" aria-controls="collapseExample">
-        <b>{{d.title}}</b>          {{d.date}}
-        </button>
-      </p>
-      <div class="collapse" id="collapseExample{{d.id}}">
-        <div class="card card-body">
+    <div class="card" id="card">
+      {% for d in diary %}
+      <ul>
+        <li>
+          <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target="#collapseExample{{d.id}}" aria-expanded="false" aria-controls="collapseExample">
+            <b>{{d.title}}</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{d.date}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{d.time}}
+            </button>
+        </li>
+      </ul>
+      
+    
+    <div class="collapse" id="collapseExample{{d.id}}">
+      
+        <div class="card" id="minicard">
           <p><b>Date:</b>{{d.date}} <br>
-          <b>Time:</b>{{d.time}}
-          </p>
-          <br>
-          <b>Diary Entry:</b>
-            {{d.diarytext}}
+            <b>Time:</b>{{d.time}}
+            </p>
+            <br>
+            <b>Diary Entry:</b>
+              {{d.diarytext}}
         </div>
-        <br>
-      </div>
-    {% endfor %}
+      
+      <br>
+    </div>
+    <hr class="my-4">
+  {% endfor %}
+    </div>
+
 </div>
 {% endblock %}

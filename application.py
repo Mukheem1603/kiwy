@@ -15,7 +15,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-engine = create_engine(os.getenv("DATABASE_URL"),pool_size=20,max_overflow=0)
+engine = create_engine(os.getenv("DATABASE_URL"),pool_size=10,max_overflow=0)
 db = scoped_session(sessionmaker(bind=engine))
 
 @app.route("/")
@@ -74,14 +74,17 @@ def login():
         dt = now.strftime(" %d %B %Y ")
         ti = now.strftime(" %X ")
         print(dt)
-        return render_template("home.html",user=request.cookies.get('username'),msg=request.cookies.get('msg'),dt=dt,ti=ti)
+        return render_template("home.html",user=request.cookies.get('username'),dt=dt,ti=ti)
     if request.method == "POST":
         UName = request.form.get("username")
         Pwd = request.form.get("password")
         
         if db.execute("SELECT * from users WHERE username= :u AND password= :p",{"u":UName,"p":Pwd}).rowcount == 1 :
             print("Successful login")
-            resp=make_response(render_template("home.html",user=UName))
+            now = datetime.now()
+            dt = now.strftime(" %d %B %Y ")
+            ti = now.strftime(" %X ")
+            resp=make_response(render_template("home.html",user=UName,dt=dt,ti=ti))
             resp.set_cookie('username',UName)
             return resp
         else :

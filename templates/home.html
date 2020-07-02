@@ -9,6 +9,12 @@
     padding: 4%;
     margin-top: 2%;
 }
+.form-control{
+    border-color: black;
+}
+.form-control:focus {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
 </style>
 {% endblock %}
 {% block content %}
@@ -17,17 +23,17 @@
     <div class="card" id="card">
         <form action="{{url_for('diarysubmit')}}" method="POST">
             
-                <h3>{{user}}'s Diary </h3>
-                <p><b>Date:</b> {{dt}}
+                <h3>{{user}}'s Diary 📜</h3>
+                <p> 📅 <b>Date:</b> {{dt}}
                     <br>
-                    <b>Time:</b> {{ti}}
+                    <b> 🕰 Time:</b> {{ti}}
                 </p>
                 <div class="form-group">
-                    <label for="exampleInputPassword1"><h5>Title:</h5></label>
+                    <label for="exampleInputPassword1"><h5> 🏷 Title:</h5></label>
                     <input type="text" class="form-control" id="exampleInputPassword1" name="title">
                   </div>
                   <div class="form-group">
-                    <label for="exampleFormControlTextarea1"><h5>Diary Entry:</h5></label>
+                    <label for="exampleFormControlTextarea1"><h5> 🖋 Diary Entry:</h5></label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="16" name="diarytext"></textarea>
               </div>
               <button type="submit" class="btn btn-dark">Submit</button>
