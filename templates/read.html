@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}
+Read
+{% endblock %}
+{% block head %}
+<!-- <script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myDIV *").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script> -->
+{% endblock %}
+{% block classr %}
+active
+{% endblock %}
+{% block content %}
+
+
+
+<!-- <div class="container">
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+</div> -->
+
+<div class="container" id="myDIV">
+    
+    <br>
+    {% for d in diary %}
+    <p>
+        <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExample{{d.id}}" aria-expanded="false" aria-controls="collapseExample">
+        <b>{{d.title}}</b>          {{d.date}}
+        </button>
+      </p>
+      <div class="collapse" id="collapseExample{{d.id}}">
+        <div class="card card-body">
+          <p><b>Date:</b>{{d.date}} <br>
+          <b>Time:</b>{{d.time}}
+          </p>
+          <br>
+          <b>Diary Entry:</b>
+            {{d.diarytext}}
+        </div>
+        <br>
+      </div>
+    {% endfor %}
+</div>
+{% endblock %}

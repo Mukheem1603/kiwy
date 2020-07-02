@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kiwy-Register</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <style>
+      body{
+          background-color: #e9ecef;
+      }
+      @media(min-width:800px){
+#register{
+    width:65%
+}
+}
+
+    #register{
+        background-color: #DCDCDC;
+        margin-left: 1%;
+        margin-top:4%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    </style>
+</head>
+<body>
+    <div class="jumbotron" id="jumbo">
+        <h1 class="display-4">Kiwy ✒</h1>
+        <p class="lead">This is a simple online Diary.</p>
+        <hr class="my-4">
+        {% if msg %}
+        <div class="alert alert-danger" role="alert">
+            <p> {{msg}} </p>
+           </div>
+        {% endif %}
+        <div class="card" id="register">
+            <h5 class="card-header">Register</h5>
+            <div class="card-body">
+                <form action="{{url_for('register')}}" method="POST">
+                    <div class="form-group">
+                      <label for="exampleInputuser">Username</label>
+                      <input type="username" class="form-control" id="exampleInputuser" aria-describedby="emailHelp" name="username" required>
+                      <small id="emailHelp" class="form-text text-muted">We are going to call you by this name😄</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark">Register</button>
+                  </form>
+            </div>
+            <a href="{{url_for('loginpage')}}" class="card-footer">Already a user? Log In...</a>
+          </div>
+      </div>
+  
+</body>
+</html>

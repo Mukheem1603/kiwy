@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiwy-{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <style>
+        body{
+          background-color: #e9ecef;
+      }
+    </style>
+        {% block head %}{% endblock %}
+    
+</head>
+
+<body>
+   
+    <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar bg-dark">
+        
+        <a class="navbar-brand mr-0 mr-md-2" href="#" aria-label="Bootstrap">Kiwy ✒</a>
+      
+        <div class="navbar-nav-scroll">
+          <ul class="navbar-nav bd-navbar-nav flex-row">
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('login')}}">
+                  <button id="btn1" type="button" class="btn btn-outline-primary {% block class %}{% endblock %}">Home</button>
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('readpage')}}">
+                    <button id="btn2" type="button" class="btn btn-outline-primary {% block classr %}{% endblock %}">Read</button>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('logout')}}"><button class="btn btn-outline-danger">Logout</button></a>
+              </li>
+          </ul>
+        </div>
+      </header>
+{% block content %}
+{% endblock %}
+
+
+
+
+
+
+    
+    
+</body>
+</html>
