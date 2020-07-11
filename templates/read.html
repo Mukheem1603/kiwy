@@ -50,6 +50,11 @@ active
     
     <div class="card" id="card">
       {% for d in diary %}
+        {% if not d %}
+        <div class="alert alert-primary" role="alert">
+  Start writing your diary now!
+</div>
+        {% else %}
       <ul>
         <li>
           <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target="#collapseExample{{d.id}}" aria-expanded="false" aria-controls="collapseExample">
@@ -73,7 +78,7 @@ active
       <br>
     </div>
     <hr class="my-4">
-         
+         {% endif %}
   {% endfor %}
     </div>
 
